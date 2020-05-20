@@ -12,8 +12,21 @@ router.get('/', async (req, res)=>{
   res.send(users)
 })
 
-//POST A NEW USER
 
+//GET ONE
+
+router.get('/:id', async (req, res)=>{
+  try{
+    const user = await Users.findById(req.params.id)
+    res.send(user)
+  }
+  catch(err){
+    console.log(err.message)
+  }
+})
+
+
+//POST A NEW USER
 
  router.post('/', async (req,res)=>{
    console.log(req.body)
@@ -29,7 +42,6 @@ router.get('/', async (req, res)=>{
      sex: sex
     })
     const {error} = validateData(req.body)
-    console.log(newUser)
     if (error) return res.status(400).send(error.details[0].message)
     try{
       await newUser.save()
@@ -41,6 +53,31 @@ router.get('/', async (req, res)=>{
     }
   })
   
-  
+  //UPDATE ONE
+
+router.put('/:id', async (req, res)=>{ 
+  const {error}=validateData(req.body)
+  if (error) return res.status(400).send(error.details[0].message)
+  try{
+    await Users.findByIdAndUpdate(req.params.id, req.body)
+  }
+  catch(err){
+    console.log(err.message)
+  }
+  })
+
+  router.delete('/:id', async (req, res)=>{
+    try{
+      await Users.findByIdAndDelete(req.params.id)
+      res.send('User deleted: ' + req.body.username)
+    }
+    catch(err){
+      console.log(err.message)
+    }
+    
+  })
+
+
+
 
 module.exports = router

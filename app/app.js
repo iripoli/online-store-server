@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require("body-parser")
 
 const usersRoutes = require('../routes/users')
+const clothesRoutes = require('../routes/clothes')
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.use(function (error, req, res, next) {
 
 
 app.use('/api/users/', usersRoutes)
+app.use('/api/clothes/', clothesRoutes)
 
 const PORT = process.env.PORT || 3002
 app.listen(PORT, ()=>console.log(`Listening to port: ${PORT}`))

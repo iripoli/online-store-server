@@ -43,7 +43,7 @@ const Users = mongoose.model('Users', new mongoose.Schema({
 
  const validateData = (data)=>{
    const schema = Joi.object({
-     admin: Joi.boolean(),
+     admin: Joi,
      username: Joi.string().min(5).max(30).required(),
      email: Joi.string().email().required(),
      name:Joi.string().min(4).max(30).required(),
