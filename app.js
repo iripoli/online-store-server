@@ -1,9 +1,9 @@
-require('../config/database')
+require('./config/database')
 const express = require('express')
 const bodyParser = require("body-parser")
 
-const usersRoutes = require('../routes/users')
-const clothesRoutes = require('../routes/clothes')
+const usersRoutes = require('./routes/users')
+const clothesRoutes = require('./routes/clothes')
 
 const app = express()
 
