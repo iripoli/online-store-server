@@ -17,9 +17,7 @@ const Clothes = mongoose.model('clothes', new mongoose.Schema({
     required:true
   },
   footsize:{
-    type: Number,
-    min: 20,
-    max: 50
+    type: Array
   },
   type:{
     type: String,
@@ -42,7 +40,7 @@ const validateData = (data)=>{
     name: Joi.string().required(),
     size: Joi.array(),
     picture: Joi.string().required(),
-    footsize: Joi.number().max(50).min(20),
+    footsize: Joi.array(),
     type:Joi.string().required(),
     sex:Joi.string().required()
   })
