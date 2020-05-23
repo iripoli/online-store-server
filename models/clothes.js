@@ -5,15 +5,17 @@ const Clothes = mongoose.model('clothes', new mongoose.Schema({
   price: Number,
   name:{
     type: String,
-    lowercase: true
+    lowercase: true,
+    required: true
   },
   size: {
-    type: String,
-    enum: ['s','m','l' ],
+    type: Array,
     lowercase: true
-
   },
-  picture: String,
+  picture: {
+    type:String,
+    required:true
+  },
   footsize:{
     type: Number,
     min: 20,
@@ -22,14 +24,15 @@ const Clothes = mongoose.model('clothes', new mongoose.Schema({
   type:{
     type: String,
     enum:['jacket', 'sneaker', 'hat', 'shirt', 'pants'],
-    lowercase: true
+    lowercase: true,
+    required: true
 
   }, 
   sex:{
     type: String,
     enum: ['m', 'f', 'unisex'],
-    lowercase: true
-
+    lowercase: true,
+    required: true
   }
 }))
 
