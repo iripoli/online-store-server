@@ -40,7 +40,7 @@ const validateData = (data)=>{
   const schema = Joi.object({
     price: Joi.number().required(),
     name: Joi.string().required(),
-    size: Joi.string(),
+    size: Joi.array(),
     picture: Joi.string().required(),
     footsize: Joi.number().max(50).min(20),
     type:Joi.string().required(),
