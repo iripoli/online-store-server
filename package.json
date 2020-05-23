@@ -4,7 +4,7 @@
   "description": "The backend of my online store",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app/app.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
