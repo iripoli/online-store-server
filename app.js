@@ -13,6 +13,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.use(function (error, req, res, next) {
   if(error instanceof SyntaxError){ //Handle SyntaxError here.
     return res.status(500).send({data : "Invalid data"});
