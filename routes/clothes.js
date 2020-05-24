@@ -15,6 +15,37 @@ router.get('/', async (req, res)=>{
   }
 })
 
+//GET ALL BY CATEGORY
+
+router.get('/category', async (req, res)=>{
+  try{
+    const categoryClothes = await Clothes.find(
+      {type:req.query.type })
+      res.send(categoryClothes)
+  }
+  catch(err){
+    console.log(err.message)
+  }
+})
+
+
+//GET ALL BY SEX
+
+router.get('/genre', async (req, res)=>{
+  try{
+    const queryUnisex = await Clothes
+    const sexQueryClothes = await Clothes.find(
+      { $or:
+        [{sex: req.query.sex},
+        {sex:'unisex'}]
+      })
+      res.send(sexQueryClothes)
+  }
+  catch(err){
+    console.log(err.message)
+  }
+})
+
 //GET ONE
 
 router.get('/:id', async (req,res)=>{
@@ -26,6 +57,8 @@ router.get('/:id', async (req,res)=>{
     console.log(err.message)
   }
 })
+
+
 
 //CREATE
 
@@ -79,5 +112,6 @@ router.delete('/:id', async (req, res)=>{
     console.log(err.message)
   }
 })
+
 
 module.exports = router
